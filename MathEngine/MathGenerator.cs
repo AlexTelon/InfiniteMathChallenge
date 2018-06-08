@@ -9,7 +9,7 @@ namespace InfiniteMathChallenge.MathEngine
     public class MathGenerator
     {
 
-        public MathChallenge NextQuestion()
+        public MathChallenge Next()
         {
             var challenge = new MathChallenge();
 

@@ -1,4 +1,5 @@
-﻿using InfiniteMathChallenge.Utility;
+﻿using InfiniteMathChallenge.MathEngine;
+using InfiniteMathChallenge.Utility;
 using System;
 using System.Windows.Input;
 
@@ -6,15 +7,9 @@ namespace InfiniteMathChallenge
 {
     class MainWindowVM : BindableBase
     {
-        public string CurrentQuestion
+        public MathChallenge Challenge
         {
-            get => Get<string>();
-            set => Set(value);
-        }
-
-        public string CurrentAnswer
-        {
-            get => Get<string>();
+            get => Get<MathChallenge>();
             set => Set(value);
         }
 
@@ -26,17 +21,20 @@ namespace InfiniteMathChallenge
 
         public ICommand NextCommand { get; set; }
 
+        private MathGenerator Generator = new MathGenerator();
+
         public MainWindowVM()
         {
             NextCommand = new RelayCommand(OnNext);
 
-            CurrentQuestion = "1 + 3";
-            CurrentAnswer = "4";
+            Challenge = Generator.Next();
         }
 
         private void OnNext(object obj)
         {
             Counter++;
+
+            Challenge = Generator.Next();
         }
     }
 }

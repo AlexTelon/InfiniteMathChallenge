@@ -25,7 +25,7 @@
             <WrapPanel VerticalAlignment="Center"
                        HorizontalAlignment="Center">
                 <TextBlock Foreground="White"
-                       Text="{Binding CurrentQuestion}"
+                       Text="{Binding Challenge.Question}"
                        FontSize="45"
                        ></TextBlock>
 
@@ -35,7 +35,7 @@
                        FontSize="45"></TextBlock>
 
                 <TextBlock Foreground="White"
-                           Text="{Binding CurrentAnswer}"
+                           Text="{Binding Challenge.Answer}"
                            FontSize="45"></TextBlock>
 
             </WrapPanel>

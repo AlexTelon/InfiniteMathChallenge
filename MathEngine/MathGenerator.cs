@@ -1,5 +1,6 @@
 ﻿using InfiniteMathChallenge.Utility;
 using System;
+using System.Collections.Generic;
 
 namespace InfiniteMathChallenge.MathEngine
 {
@@ -16,6 +17,8 @@ namespace InfiniteMathChallenge.MathEngine
             get => Get<int>();
             set => Set(value);
         }
+
+        public ResultLog Stats { get; private set; } = new ResultLog();
 
         public MathGenerator()
         {
@@ -40,7 +43,10 @@ namespace InfiniteMathChallenge.MathEngine
 
         internal bool Answer(string userAnswer)
         {
-            if (IsCorrect(userAnswer))
+            var correct = IsCorrect(userAnswer);
+            LogResult(userAnswer);
+
+            if (correct)
             {
                 Streak++;
                 Next();
@@ -50,6 +56,11 @@ namespace InfiniteMathChallenge.MathEngine
                 Streak = 0;
                 return false;
             }
+        }
+
+        private void LogResult(string userAnswer)
+        {
+
         }
 
         private bool IsCorrect(string answer)

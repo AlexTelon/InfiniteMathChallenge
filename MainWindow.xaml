@@ -19,9 +19,13 @@
 
         <Grid Grid.Row="0"
               Background="Black">
-            <TextBlock Foreground="White"
+            <WrapPanel>
+                <TextBlock Foreground="White"
+                       Text="Correct answers: "></TextBlock>
+                <TextBlock Foreground="White"
                        Text="{Binding Counter}"></TextBlock>
-            
+            </WrapPanel>
+
             <WrapPanel VerticalAlignment="Center"
                        HorizontalAlignment="Center">
                 <TextBlock Foreground="White"
@@ -34,9 +38,10 @@
                        Text=" = "
                        FontSize="45"></TextBlock>
 
-                <TextBlock Foreground="White"
-                           Text="{Binding Challenge.Key}"
-                           FontSize="45"></TextBlock>
+                <TextBox Background="Black"
+                         Foreground="White"
+                         Text="{Binding UserAnswer}"
+                         FontSize="45"></TextBox>
 
             </WrapPanel>
         </Grid>

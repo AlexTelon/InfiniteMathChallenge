@@ -7,6 +7,12 @@ namespace InfiniteMathChallenge
 {
     class MainWindowVM : BindableBase
     {
+        public string UserAnswer
+        {
+            get => Get<string>();
+            set => Set(value);
+        }
+
         public MathChallenge Challenge
         {
             get => Get<MathChallenge>();
@@ -34,7 +40,15 @@ namespace InfiniteMathChallenge
         {
             Counter++;
 
-            Challenge = Generator.Next();
+            if (IsCorrectAnswer())
+            {
+                Challenge = Generator.Next();
+            }
+        }
+
+        private bool IsCorrectAnswer()
+        {
+            return UserAnswer == Challenge.Key;
         }
     }
 }

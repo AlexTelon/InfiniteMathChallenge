@@ -41,6 +41,7 @@
         <StackPanel Grid.Row="1"
                     Background="Gray">
             <Button Content="Next question"
+                    Command="{Binding NextCommand}"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     Height="50"></Button>

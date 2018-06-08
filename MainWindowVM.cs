@@ -13,17 +13,9 @@ namespace InfiniteMathChallenge
             set => Set(value);
         }
 
-        public MathChallenge Challenge
-        {
-            get => Get<MathChallenge>();
-            set => Set(value);
-        }
+        public MathChallenge Current => Generator.Current;
 
-        public int Counter
-        {
-            get => Get<int>();
-            set => Set(value);
-        }
+        public int Streak => Generator.Streak;
 
         public ICommand NextCommand { get; set; }
 
@@ -33,22 +25,24 @@ namespace InfiniteMathChallenge
         {
             NextCommand = new RelayCommand(OnNext);
 
-            Challenge = Generator.Next();
+            Generator.PropertyChanged += Generator_PropertyChanged;
+
+            //Challenge = Generator.Next();
+        }
+
+        private void Generator_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            OnPropertyChanged(e.PropertyName);
         }
 
         private void OnNext(object obj)
         {
-            if (IsCorrectAnswer())
+            var correct = Generator.Answer(UserAnswer);
+
+            if (correct)
             {
-                Counter++;
-                Challenge = Generator.Next();
                 UserAnswer = "";
             }
-        }
-
-        private bool IsCorrectAnswer()
-        {
-            return UserAnswer == Challenge.Key;
         }
     }
 }

@@ -22,15 +22,15 @@
               Background="Black">
             <WrapPanel>
                 <TextBlock Foreground="White"
-                       Text="Correct answers: "></TextBlock>
+                       Text="Current streak: "></TextBlock>
                 <TextBlock Foreground="White"
-                       Text="{Binding Counter}"></TextBlock>
+                       Text="{Binding Streak}"></TextBlock>
             </WrapPanel>
 
             <WrapPanel VerticalAlignment="Center"
                        HorizontalAlignment="Center">
                 <TextBlock Foreground="White"
-                       Text="{Binding Challenge.Question}"
+                       Text="{Binding Current.Question}"
                        FontSize="45"
                        ></TextBlock>
 

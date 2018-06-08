@@ -1,13 +1,30 @@
-﻿using System;
+﻿using InfiniteMathChallenge.Utility;
+using System;
 
 namespace InfiniteMathChallenge.MathEngine
 {
-    public class MathGenerator
+    public class MathGenerator : BindableBase
     {
-
-        public MathChallenge Next()
+        public MathChallenge Current
         {
-            var challenge = new MathChallenge();
+            get => Get<MathChallenge>();
+            set => Set(value);
+        }
+
+        public int Streak
+        {
+            get => Get<int>();
+            set => Set(value);
+        }
+
+        public MathGenerator()
+        {
+            Next();
+        }
+
+        public void Next()
+        {
+            var tmp = new MathChallenge();
 
             Random rnd = new Random();
 
@@ -15,10 +32,29 @@ namespace InfiniteMathChallenge.MathEngine
             var b = rnd.Next(1, 10);
             var key = a + b;
 
-            challenge.Question = a + " + " + b;
-            challenge.Key = "" + key;
+            tmp.Question = a + " + " + b;
+            tmp.Key = "" + key;
 
-            return challenge;
+            Current = tmp;
+        }
+
+        internal bool Answer(string userAnswer)
+        {
+            if (IsCorrect(userAnswer))
+            {
+                Streak++;
+                Next();
+                return true;
+            } else
+            {
+                Streak = 0;
+                return false;
+            }
+        }
+
+        private bool IsCorrect(string answer)
+        {
+            return answer == Current.Key;
         }
     }
 }

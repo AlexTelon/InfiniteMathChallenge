@@ -13,11 +13,16 @@ namespace InfiniteMathChallenge.MathEngine
         {
             var challenge = new MathChallenge();
 
-            challenge.Question = "1 + 3";
-            challenge.Answer = "4";
+            Random rnd = new Random();
+
+            var a = rnd.Next(1, 10);
+            var b = rnd.Next(1, 10);
+            var key = a + b;
+
+            challenge.Question = a + " + " + b;
+            challenge.Key = "" + key;
 
             return challenge;
         }
-
     }
 }

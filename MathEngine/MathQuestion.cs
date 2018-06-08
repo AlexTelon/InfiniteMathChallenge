@@ -13,6 +13,6 @@ namespace InfiniteMathChallenge.MathEngine
     {
         public string Question { get; set; }
 
-        public string Answer { get; set; }
+        public string Key { get; set; }
     }
 }

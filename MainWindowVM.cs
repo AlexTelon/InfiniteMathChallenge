@@ -43,6 +43,7 @@ namespace InfiniteMathChallenge
             if (IsCorrectAnswer())
             {
                 Challenge = Generator.Next();
+
             }
         }
 

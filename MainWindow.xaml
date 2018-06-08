@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InfiniteMathChallenge"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        KeyDown="Window_KeyDown">
 
     <Window.DataContext>
         <local:MainWindowVM/>
@@ -38,7 +39,8 @@
                        Text=" = "
                        FontSize="45"></TextBlock>
 
-                <TextBox Background="Black"
+                <TextBox x:Name="AnswerField"
+                         Background="Black"
                          Foreground="White"
                          Text="{Binding UserAnswer}"
                          FontSize="45"></TextBox>

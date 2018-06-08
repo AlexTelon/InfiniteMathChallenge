@@ -6,7 +6,44 @@
         xmlns:local="clr-namespace:InfiniteMathChallenge"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
+    <Window.DataContext>
+        <local:MainWindowVM/>
+    </Window.DataContext>
+
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0"
+              Background="Black">
+            <WrapPanel VerticalAlignment="Center"
+                       HorizontalAlignment="Center">
+                <TextBlock Foreground="White"
+                       Text="{Binding CurrentQuestion}"
+                       FontSize="45"
+                       ></TextBlock>
+
+                <!--static part-->
+                <TextBlock Foreground="White"
+                       Text=" = "
+                       FontSize="45"></TextBlock>
+
+                <TextBlock Foreground="White"
+                           Text="{Binding CurrentAnswer}"
+                           FontSize="45"></TextBlock>
+
+            </WrapPanel>
+        </Grid>
+
+        <StackPanel Grid.Row="1"
+                    Background="Gray">
+            <Button Content="Next question"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Height="50"></Button>
+        </StackPanel>
     </Grid>
 </Window>

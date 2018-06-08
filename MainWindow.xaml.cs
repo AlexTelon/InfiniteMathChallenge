@@ -75,7 +75,7 @@ namespace InfiniteMathChallenge
             }
 
             // force update the binding
-            var bindingExpression = AnswerField.GetBindingExpression(TextBox.TextProperty);
+            var bindingExpression = AnswerField.GetBindingExpression(TextBlock.TextProperty);
             bindingExpression.UpdateSource();
         }
     }

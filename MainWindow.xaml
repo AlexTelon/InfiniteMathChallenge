@@ -39,11 +39,11 @@
                        Text=" = "
                        FontSize="45"></TextBlock>
 
-                <TextBox x:Name="AnswerField"
+                <TextBlock x:Name="AnswerField"
                          Background="Black"
                          Foreground="White"
                          Text="{Binding UserAnswer, Mode=TwoWay}"
-                         FontSize="45"></TextBox>
+                         FontSize="45"></TextBlock>
 
             </WrapPanel>
         </Grid>

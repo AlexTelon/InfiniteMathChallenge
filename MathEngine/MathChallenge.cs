@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace InfiniteMathChallenge.MathEngine
 {
     /// <summary>
@@ -9,5 +11,12 @@ namespace InfiniteMathChallenge.MathEngine
         public string Question { get; set; }
 
         public string Key { get; set; }
+
+        internal bool Answer(string userAnswer)
+        {
+            return IsCorrect(userAnswer);
+        }
+
+        private bool IsCorrect(string answer) => (answer == Key);
     }
 }

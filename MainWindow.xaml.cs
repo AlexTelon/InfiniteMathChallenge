@@ -51,7 +51,7 @@ namespace InfiniteMathChallenge
 
             if (input != null)
             {
-                AnswerField.Text += input;
+                UserTextInput.Text += input;
 
                 // dont let it propagate and be used somewhere else too. Otherwise it will trigger twice if the textbox is focused
                 // but only consider it handled if its a simple numeric value
@@ -61,14 +61,15 @@ namespace InfiniteMathChallenge
             {
                 if (e.Key == Key.Back)
                 {
-                    var endIndex = Math.Max(0, (AnswerField.Text.Count() - 1));
-                    AnswerField.Text = AnswerField.Text.Substring(0, endIndex);
+                    var endIndex = Math.Max(0, (UserTextInput.Text.Count() - 1));
+                    UserTextInput.Text = UserTextInput.Text.Substring(0, endIndex);
                 }
             }
 
             // force update the binding
-            var bindingExpression = AnswerField.GetBindingExpression(TextBlock.TextProperty);
+            var bindingExpression = UserTextInput.GetBindingExpression(TextBlock.TextProperty);
             bindingExpression.UpdateSource();
         }
+
     }
 }

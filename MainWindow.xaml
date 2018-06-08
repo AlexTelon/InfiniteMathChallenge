@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InfiniteMathChallenge"
+        xmlns:controls="clr-namespace:InfiniteMathChallenge.Controls"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         KeyDown="Window_KeyDown">
@@ -18,44 +19,37 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0"
-              Background="Black">
-            <WrapPanel>
-                <TextBlock Foreground="White"
-                       Text="Current streak: "></TextBlock>
-                <TextBlock Foreground="White"
-                       Text="{Binding Streak}"></TextBlock>
-            </WrapPanel>
+        <TextBlock x:Name="UserTextInput"
+                   Text="{Binding UserAnswer, Mode=TwoWay}"></TextBlock>
 
-            <WrapPanel VerticalAlignment="Center"
-                       HorizontalAlignment="Center">
-                <TextBlock Foreground="White"
-                       Text="{Binding Current.Question}"
-                       FontSize="45"
-                       ></TextBlock>
+        <Grid Grid.Row="0">
+            <ContentControl Content="{Binding CurrentControl}">
+                <ContentControl.Resources>
+                    <DataTemplate DataType="{x:Type controls:StatsControlVM}">
+                        <controls:StatsControl Stats="{Binding Generator.Stats}"/>
+                    </DataTemplate>
 
-                <!--static part-->
-                <TextBlock Foreground="White"
-                       Text=" = "
-                       FontSize="45"></TextBlock>
-
-                <TextBlock x:Name="AnswerField"
-                         Background="Black"
-                         Foreground="White"
-                         Text="{Binding UserAnswer, Mode=TwoWay}"
-                         FontSize="45"></TextBlock>
-
-            </WrapPanel>
+                    <DataTemplate DataType="{x:Type controls:GameControlVM}">
+                        <controls:GameControl UserAnswer="{Binding UserAnswer, Mode=TwoWay}"
+                                              Streak="{Binding Streak}"
+                                              CurrentChallenge="{Binding Current}"/>
+                    </DataTemplate>
+                </ContentControl.Resources>
+            </ContentControl>
         </Grid>
 
-        <StackPanel Grid.Row="1"
-                    Background="Gray">
+        <Grid Grid.Row="1"
+              Background="Blue">
+            <Button Content="Stats"
+                    Command="{Binding StatsCommand}"
+                    Width="50"
+                    HorizontalAlignment="Left"></Button>
             <Button Content="Next question"
                     Command="{Binding NextCommand}"
                     IsDefault="True"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     Height="50"></Button>
-        </StackPanel>
+        </Grid>
     </Grid>
 </Window>

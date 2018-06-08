@@ -18,7 +18,7 @@ namespace InfiniteMathChallenge.MathEngine
             set => Set(value);
         }
 
-        public ResultLog Stats { get; private set; } = new ResultLog();
+        public ResultLog Stats { get; set; } = new ResultLog();
 
         public MathGenerator()
         {
@@ -43,10 +43,10 @@ namespace InfiniteMathChallenge.MathEngine
 
         internal bool Answer(string userAnswer)
         {
-            var correct = IsCorrect(userAnswer);
-            LogResult(userAnswer);
+            bool result = Current.Answer(userAnswer);
+            Stats.Log(Current, userAnswer);
 
-            if (correct)
+            if (result)
             {
                 Streak++;
                 Next();
@@ -58,14 +58,5 @@ namespace InfiniteMathChallenge.MathEngine
             }
         }
 
-        private void LogResult(string userAnswer)
-        {
-
-        }
-
-        private bool IsCorrect(string answer)
-        {
-            return answer == Current.Key;
-        }
     }
 }

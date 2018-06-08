@@ -62,9 +62,14 @@ namespace InfiniteMathChallenge
             {
                 if (e.Key == Key.Back)
                 {
-                    AnswerField.Text = AnswerField.Text.Substring(0, AnswerField.Text.Count() - 1);
+                    var endIndex = Math.Max(0, (AnswerField.Text.Count() - 1));
+                    AnswerField.Text = AnswerField.Text.Substring(0, endIndex);
                 }
             }
+
+            // force update the binding
+            var bindingExpression = AnswerField.GetBindingExpression(TextBox.TextProperty);
+            bindingExpression.UpdateSource();
         }
     }
 }

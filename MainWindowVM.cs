@@ -38,12 +38,11 @@ namespace InfiniteMathChallenge
 
         private void OnNext(object obj)
         {
-            Counter++;
-
             if (IsCorrectAnswer())
             {
+                Counter++;
                 Challenge = Generator.Next();
-
+                UserAnswer = "";
             }
         }
 

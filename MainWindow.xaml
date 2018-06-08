@@ -42,7 +42,7 @@
                 <TextBox x:Name="AnswerField"
                          Background="Black"
                          Foreground="White"
-                         Text="{Binding UserAnswer}"
+                         Text="{Binding UserAnswer, Mode=TwoWay}"
                          FontSize="45"></TextBox>
 
             </WrapPanel>
@@ -52,6 +52,7 @@
                     Background="Gray">
             <Button Content="Next question"
                     Command="{Binding NextCommand}"
+                    IsDefault="True"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     Height="50"></Button>

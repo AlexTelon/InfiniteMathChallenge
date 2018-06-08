@@ -19,6 +19,9 @@
 
         <Grid Grid.Row="0"
               Background="Black">
+            <TextBlock Foreground="White"
+                       Text="{Binding Counter}"></TextBlock>
+            
             <WrapPanel VerticalAlignment="Center"
                        HorizontalAlignment="Center">
                 <TextBlock Foreground="White"

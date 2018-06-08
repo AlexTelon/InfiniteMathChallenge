@@ -4,16 +4,39 @@ using System.Windows.Input;
 
 namespace InfiniteMathChallenge
 {
-    class MainWindowVM
+    class MainWindowVM : BindableBase
     {
-        public string CurrentQuestion { get; set; } = "1 + 2";
-        public string CurrentAnswer { get; set; } = "3";
-
-        public ICommand NextCommand { get; set; } = new RelayCommand(OnNext);
-
-        private static void OnNext(object obj)
+        public string CurrentQuestion
         {
-            Console.WriteLine("Next!");
+            get => Get<string>();
+            set => Set(value);
+        }
+
+        public string CurrentAnswer
+        {
+            get => Get<string>();
+            set => Set(value);
+        }
+
+        public int Counter
+        {
+            get => Get<int>();
+            set => Set(value);
+        }
+
+        public ICommand NextCommand { get; set; }
+
+        public MainWindowVM()
+        {
+            NextCommand = new RelayCommand(OnNext);
+
+            CurrentQuestion = "1 + 3";
+            CurrentAnswer = "4";
+        }
+
+        private void OnNext(object obj)
+        {
+            Counter++;
         }
     }
 }

@@ -56,9 +56,16 @@ namespace InfiniteMathChallenge
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             var input = GetKeyNumericValue(e);
-            AnswerField.Text += input;
 
-            if (input == null)
+            if (input != null)
+            {
+                AnswerField.Text += input;
+
+                // dont let it propagate and be used somewhere else too. Otherwise it will trigger twice if the textbox is focused
+                // but only consider it handled if its a simple numeric value
+                e.Handled = true;
+            }
+            else
             {
                 if (e.Key == Key.Back)
                 {
